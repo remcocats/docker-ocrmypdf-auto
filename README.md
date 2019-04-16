@@ -4,5 +4,5 @@ A docker daemon that watches a given folder and automatically runs [OCRmyPDF](ht
 
 ```
 # out of the box supported languages are "eng" and "deu"
-docker run -d -v $PWD:/data -e OCRMYPDF_LANGUAGE=eng choffmeister/ocrmypdf-auto:latest
+docker run -d -e PUID=1000 -e PGID=1000 -v $PWD:/data -e OCRMYPDF_LANGUAGE=eng choffmeister/ocrmypdf-auto:latest
 ```
