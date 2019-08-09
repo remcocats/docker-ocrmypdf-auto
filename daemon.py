@@ -43,6 +43,8 @@ while True:
                 '-l', os.environ['OCRMYPDF_LANGUAGE'],
                 '--rotate-pages',
                 '--deskew',
+                '--clean',
+                '--force-ocr',
                 '--remove-background',
                 '--optimize', '3',
                 '--jobs', '4',
