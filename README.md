@@ -1,4 +1,4 @@
-# ocrmypdf-auto
+# ocrmypdf-nl
 
 A docker daemon that watches a given folder and automatically runs [OCRmyPDF](https://github.com/jbarlow83/OCRmyPDF) on PDFs placed inside that folder.
 This is a fork from [ocrmypdf-auto](https://github.com/choffmeister/docker-ocrmypdf-auto) only added support for nld fra and spa
