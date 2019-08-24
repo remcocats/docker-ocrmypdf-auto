@@ -6,9 +6,9 @@ import re
 import subprocess
 import time
 
-base_folder = '/data'
-done_folder = '/done'
-error_folder = '/error'
+base_folder = '/ocr/data'
+done_folder = '/ocr/done'
+error_folder = '/ocr/error'
 
 def run(bin, params):
     p = subprocess.Popen([bin] + params)
