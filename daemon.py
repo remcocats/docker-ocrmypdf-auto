@@ -60,10 +60,13 @@ while True:
             ])
             print('Done.')
             os.rename(file_in, file_in_done)
+            print('move file %s to %s' % (file_in, file_in_done))
             os.rename(file_out, file_out_done)
+            print('move file %s to %s' % (file_out, file_out_done))
         except BaseException as e:
             print('Error: %s' % str(e))
             os.rename(file_in, file_in_error)
+            print('move file %s to %s' % (file_in, file_in_error))
     time.sleep(15)
 
 
