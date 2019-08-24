@@ -7,6 +7,8 @@ import subprocess
 import time
 
 base_folder = '/data'
+done_folder = '/done'
+error_folder = '/error'
 
 def run(bin, params):
     p = subprocess.Popen([bin] + params)
@@ -28,15 +30,18 @@ def get_file_next():
     os.listdir(base_folder)
     for file in filter(lambda f: os.path.isfile(os.path.join(base_folder, f)), os.listdir(base_folder)):
         file_in = os.path.join(base_folder, file)
+        file_in_done = os.path.join(done_folder, file)
+        file_in_error = os.path.join(error_folder, file)
         file_out = re.sub(r'\.pdf$', '-ocr.pdf', file_in)
+        file_out_done = re.sub(r'\.pdf$', '-ocr.pdf', file_in_done)
         if check(file_in, file_out):
-            return file_in, file_out
+            return file_in, file_out, file_in_done, file_out_done, file_in_error
     return None
 
 while True:
     file_next = get_file_next()
     if file_next:
-        file_in, file_out = file_next
+        file_in, file_out, file_in_done, file_out_done = file_next
         print('Processing %s...' % file_in)
         try:
             run('ocrmypdf', [
@@ -54,8 +59,11 @@ while True:
                 file_out
             ])
             print('Done.')
+            os.rename(file_in, file_in_done)
+            os.rename(file_out, file_out_done)
         except BaseException as e:
             print('Error: %s' % str(e))
+            os.rename(file_in, file_in_error)
     time.sleep(15)
 
 
