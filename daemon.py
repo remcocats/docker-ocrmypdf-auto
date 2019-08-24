@@ -41,7 +41,7 @@ def get_file_next():
 while True:
     file_next = get_file_next()
     if file_next:
-        file_in, file_out, file_in_done, file_out_done = file_next
+        file_in, file_out, file_in_done, file_out_done, file_in_error = file_next
         print('Processing %s...' % file_in)
         try:
             run('ocrmypdf', [
